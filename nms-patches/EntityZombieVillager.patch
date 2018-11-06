@@ -8,9 +8,12 @@
  
      public EntityZombieVillager(World world) {
          super(world);
-@@ -60,6 +61,11 @@
+@@ -58,8 +59,13 @@
+     }
+ 
      public void B_() {
-         if (!this.world.isClientSide && this.isConverting()) {
+-        if (!this.world.isClientSide && this.isConverting()) {
++        if (!this.world.isClientSide && this.isConverting() && this.isAlive()) { // CraftBukkit
              int i = this.du();
 +            // CraftBukkit start - Use wall time instead of ticks for villager conversion
 +            int elapsedTicks = MinecraftServer.currentTick - this.lastTick;
