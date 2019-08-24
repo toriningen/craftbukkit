@@ -1,0 +1,28 @@
+--- a/net/minecraft/server/NavigationListener.java
++++ b/net/minecraft/server/NavigationListener.java
+@@ -53,6 +53,12 @@
+     public void a(ParticleParam particleparam, boolean flag, boolean flag1, double d0, double d1, double d2, double d3, double d4, double d5) {}
+ 
+     public void a(Entity entity) {
++        // CraftBukkit start - SPIGOT-5278
++        if (entity instanceof EntityDrowned) {
++            this.a.add(((EntityDrowned) entity).a);
++            this.a.add(((EntityDrowned) entity).b);
++        } else
++        // CraftBukkit end
+         if (entity instanceof EntityInsentient) {
+             this.a.add(((EntityInsentient) entity).getNavigation());
+         }
+@@ -60,6 +66,12 @@
+     }
+ 
+     public void b(Entity entity) {
++        // CraftBukkit start - SPIGOT-5278
++        if (entity instanceof EntityDrowned) {
++            this.a.remove(((EntityDrowned) entity).a);
++            this.a.remove(((EntityDrowned) entity).b);
++        } else
++        // CraftBukkit end
+         if (entity instanceof EntityInsentient) {
+             this.a.remove(((EntityInsentient) entity).getNavigation());
+         }
